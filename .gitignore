@@ -1,0 +1,6 @@
+*__pycache__
+cardsim-env
+cardsim.egg-info
+*.code-workspace
+data/
+build/

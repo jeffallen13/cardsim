@@ -1,0 +1,14 @@
+# Core dependencies
+pandas>=2.2.2
+scipy>=1.13.1
+
+# Optional: For plotting any variables
+seaborn>=0.13.2
+
+# Optional: If you are using VS Code interactive or Jupyter
+jupyter>=1.0.0
+
+# Optional: Development tools
+build>=1.2.2
+setuptools>=65.0
+wheel>=0.45.1
