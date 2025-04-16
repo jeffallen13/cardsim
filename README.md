@@ -10,6 +10,10 @@ CardSim is a flexible, scalable Bayesian simulator for payment card fraud detect
 
 ### Installing from source
 
+```shell
+pip install git+https://github.com/jeffallen13/cardsim.git
+```
+
 ### Local install
 
 After cloning the repository, you can build the package from within the directory
