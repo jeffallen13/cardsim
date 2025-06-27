@@ -93,7 +93,7 @@ The simulator is calibrated to several publicly available data sources. The two 
 - [Federal Reserve Payments Study (FRPS)](https://www.federalreserve.gov/paymentsystems/fr-payments-study.htm): The simulator uses the 2024 FRPS Networks, 
 Processors, and Issuers Payments Surveys (NPIPS), which include data from calendar year 2022 (Board of Governors, 2024). 
 - [Survey and Diary of Consumer Payment Choice](https://www.atlantafed.org/banking-and-payments/consumer-payments/survey-and-diary-of-consumer-payment-choice): The 
-package uses data from the 2022 and 2023 surveys (Foster, Green, and Stavins, 2023, 2024). The data are located in the `cardsim/dcpc` folder. The vignette shows how to 
+package uses data from the 2023 and 2024 surveys (Foster, Green, and Stavins, 2024, 2025). The data are located in the `cardsim/dcpc` folder. The vignette shows how to 
 load the files. Storing them locally speeds up the simulator. Otherwise, the simulator will attempt to fetch them from the Atlanta Fed's website.
 
 ## References
@@ -102,9 +102,9 @@ load the files. Storing them locally speeds up the simulator. Otherwise, the sim
 
 > Board of Governors of the Federal Reserve System (2024). "The Federal Reserve Payments Study: Cards and Alternative Payments, 2021 and 2022." Washington: Board of Governors, https://www.federalreserve.gov/paymentsystems/fr-payments-study.htm.
 
-> Foster, Kevin, Claire Greene, and Joanna Stavins (2023). "2022 Survey and Diary of Consumer Payment Choice." Federal Reserve Bank of Atlanta, https://doi.org/10.29338/rdr2023-03.
-
 > Foster, Kevin, Claire Greene, and Joanna Stavins (2024). "2023 Survey and Diary of Consumer Payment Choice." Federal Reserve Bank of Atlanta, https://doi.org/10.29338/rdr2024-01.
+
+> Foster, Kevin, Claire Greene, and Joanna Stavins (2025). "2024 Survey and Diary of Consumer Payment Choice." Federal Reserve Bank of Atlanta, https://doi.org/10.29338/rdr2025-01.
 
 ## Disclaimer
 
