@@ -68,8 +68,8 @@ class Cardsim:
     def __init__(self, 
                  log_level: str = 'INFO', 
                  seed: Optional[int] = None,
-                 dcpc_start_year: int = 2022, 
-                 dcpc_end_year: int = 2023,
+                 dcpc_start_year: int = 2023, 
+                 dcpc_end_year: int = 2024,
                  dcpc_folder: Optional[str] = None,
                  txns_samples_m: int = 2500, 
                  txns_samples_n: int = 100,
@@ -104,19 +104,18 @@ class Cardsim:
         dcpc_start_year : int, optional
             The first year of data to use from the Diary of Consumer Payment 
             Choice (DCPC) in simulating payer characteristics. The default is 
-            2022. 
+            2023. 
         dcpc_end_year : int, optional
             The last year of data to use from the Diary of Consumer Payment 
             Choice (DCPC) in simulating payer characteristics. The default is 
-            2023. 
+            2024. 
         dcpc_folder : str or None
             A folder where the DCPC data live. If None, data are sourced from
             FRB Atlanta website. The default is None. The system needs at least
             one year of DCPC data and files for the following DCPC levels: 
-            day, ind, tran. An example naming structure is: 
-            dcpc_2023_daylevel_public_xls.csv. Cardsim ships with two years 
-            of data in cardsim/dcpc. The vignette shows how to access the 
-            folder path. The simulator is faster when loading files locally.
+            day, ind, tran. Cardsim ships with two years of data in 
+            cardsim/dcpc. The vignette shows how to access the folder path. The 
+            simulator is faster when loading files locally.
         txns_samples_m : int, optional 
             The number of samples to draw when simulating average number of 
             daily payment transactions. Increasing the number smooths out the 
@@ -322,8 +321,8 @@ class Cardsim:
 
     @staticmethod
     def import_dcpc_data(collection: str = 'day', 
-                         start_year: int = 2022, 
-                         end_year: int = 2023,
+                         start_year: int = 2023, 
+                         end_year: int = 2024,
                          folder: Optional[str] = None):
         '''
         Import diary of consumer payment choice data. 
@@ -334,9 +333,9 @@ class Cardsim:
             The collection to import. Valid options are 'day', 'tran', and 
             'ind'. The default is 'day'. 
         start_year : int, optional
-            The first year to import. The default is 2022. 
+            The first year to import. The default is 2023. 
         end_year : int, optional
-            The last year to import. The default is 2023. 
+            The last year to import. The default is 2024. 
         folder : str or None
             A folder where the DCPC data live. If None, data are sourced from
             FRB Atlanta website. The default is None. 
@@ -375,12 +374,18 @@ class Cardsim:
                 folder_path = Path(folder)
         
         for year in range(start_year, end_year + 1):
+            # Before 2024, files stored with _xls before .csv (likely an error)
+            if year == 2024:
+                path_end = '.csv'
+            else:
+                path_end = '_xls.csv'
+            file_name = f"dcpc_{year}_{collection}level_public{path_end}"
             if folder is not None:
                 source = (
-                    folder_path / f"dcpc_{year}_{collection}level_public_xls.csv"
+                    folder_path / file_name
                 )
             else:
-                source = f"https://www.atlantafed.org/-/media/documents/banking/consumer-payments/survey-diary-consumer-payment-choice/{year}/dcpc_{year}_{collection}level_public_xls.csv"
+                source = f"https://www.atlantafed.org/-/media/documents/banking/consumer-payments/survey-diary-consumer-payment-choice/{year}/{file_name}"
             df = pd.read_csv(source, usecols=cols).sort_values(by=sort)
             df['year'] = year
             dfs.append(df)
